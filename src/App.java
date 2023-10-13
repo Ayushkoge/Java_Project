@@ -485,7 +485,8 @@ class WithdrawMoney extends UserFunctionality {
             int amount = sc.nextInt();
 
             // Check the Entered amount is less than Account Balance
-            if (amount <= bal) {
+            int limit = 1000;
+            if (amount <= bal&& amount <= limit){
                 PreparedStatement ps1 = con
                         .prepareStatement("update USERCREATEACCOUNT set Balance=? where AccountNumber=?");
                 PreparedStatement ps2 = con.prepareStatement(
@@ -540,8 +541,8 @@ class UserWithDrawMoneyUsingAtm {
             System.out.println(bal);
             System.out.print("Enter amount for Withdraw :- ");
             int amount = sc.nextInt();
-
-            if (amount <= bal) {
+            int limit = 1000;
+            if (amount <= bal && amount <= limit) {
                 PreparedStatement ps1 = con.prepareStatement("update USERCREATEACCOUNT set Balance = ?");
                 PreparedStatement ps2 = con.prepareStatement(
                         "insert into USERHISTORY(AccountNumber, TransectionType, Amount, Date)" + "values(?,?,?,?)");
